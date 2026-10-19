@@ -1,10 +1,10 @@
-Drop your wedding photos in this folder (e.g. photo-1.jpg, photo-2.jpg).
+Lägg era bröllopsfoton i denna mapp (t.ex. photo-1.jpg, photo-2.jpg).
 
-Then, in index.html, replace each placeholder gallery tile
-(.gallery__tile--ph) with a real photo like this:
+Därefter, i index.html, ersätt varje platshållande galleriruta
+(.gallery__tile--ph) med ett rikt foto så här:
 
   <figure class="gallery__tile reveal" data-full="assets/img/photo-1.jpg">
-    <img src="assets/img/photo-1.jpg" alt="Elin and Isac" loading="lazy" />
+    <img src="assets/img/photo-1.jpg" alt="Elin och Isac" loading="lazy" />
   </figure>
 
-Tip: keep images reasonably sized (under ~500 KB each) so the page stays fast.
+Tips: håll bilderna i rimlig storlek (under ~500 KB vardera) så att sajten förblir snabb.

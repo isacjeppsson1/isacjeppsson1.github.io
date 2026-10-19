@@ -1,14 +1,14 @@
 /* ============================================================
-   Elin & Isac — Wedding landing page
+   Elin & Isac — Bröllopssajt
    ============================================================ */
 
-/* >>> EDIT <<<  Central config. Change these values to customize the page. */
+/* >>> EDIT <<<  Centralt konfiguration. Ändra dessa värden för att anpassa sajten. */
 const CONFIG = {
-  // Wedding date & time (local time). Format: YYYY-MM-DDTHH:MM:SS
-  weddingDate: "2027-06-12T14:00:00",
-  // Address used for the map + "Get directions" link
-  mapQuery: "Copenhagen, Denmark",
-  // Recipient for the RSVP form (opens the visitor's email app)
+  // Bröllopsdatum & -tid (lokal tid). Format: ÅÅÅÅ-MM-DDTHH:MM:SS
+  weddingDate: "2027-07-17T14:00:00",
+  // Adress som används för kartan + "Få vägbeskrivning"-länken
+  mapQuery: "Lilla Isie, Skåne, Sverige",
+  // Mottagare för RSVP-formuläret (öppnar besökarens e-postapp)
   rsvpEmail: "elin.and.isac@example.com",
 };
 
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLightbox();
 });
 
-/* ---------- Sticky nav ---------- */
+/* ---------- Klistrad navigering ---------- */
 function initNav() {
   const nav = document.querySelector(".nav");
   const toggle = document.getElementById("navToggle");
@@ -44,7 +44,7 @@ function initNav() {
   );
 }
 
-/* ---------- Countdown ---------- */
+/* ---------- Nedräkning ---------- */
 function initCountdown() {
   const target = new Date(CONFIG.weddingDate).getTime();
   const els = {
@@ -78,7 +78,7 @@ function initCountdown() {
   setInterval(tick, 1000);
 }
 
-/* ---------- Map + directions ---------- */
+/* ---------- Karta + vägbeskrivning ---------- */
 function initMap() {
   const q = encodeURIComponent(CONFIG.mapQuery);
   const frame = document.getElementById("mapFrame");
@@ -87,7 +87,7 @@ function initMap() {
   if (btn) btn.href = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
 }
 
-/* ---------- Reveal on scroll ---------- */
+/* ---------- Visa vid scroll ---------- */
 function initReveal() {
   const items = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window)) {
@@ -108,7 +108,7 @@ function initReveal() {
   items.forEach((el) => io.observe(el));
 }
 
-/* ---------- RSVP form ---------- */
+/* ---------- RSVP-formulär ---------- */
 function initRSVP() {
   const form = document.getElementById("rsvpForm");
   const status = document.getElementById("rsvpStatus");
@@ -122,11 +122,11 @@ function initRSVP() {
     }
     const data = new FormData(form);
     const lines = [
-      `Name: ${data.get("name")}`,
-      `Email: ${data.get("email")}`,
-      `Attending: ${data.get("attending")}`,
-      `Guests: ${data.get("guests")}`,
-      `Message: ${data.get("message") || "-"}`,
+      `Namn: ${data.get("name")}`,
+      `E-post: ${data.get("email")}`,
+      `Deltar: ${data.get("attending")}`,
+      `Gäster: ${data.get("guests")}`,
+      `Meddelande: ${data.get("message") || "-"}`,
     ];
     const subject = `RSVP — ${data.get("name")}`;
     const body = encodeURIComponent(lines.join("\n"));
@@ -136,7 +136,7 @@ function initRSVP() {
 
     window.location.href = mailto;
     status.textContent =
-      "Thanks! Your email app should open with your RSVP ready to send.";
+      "Tack! Din e-postapp bör öppnas med din RSVP redo att skickas.";
     form.reset();
   });
 }
@@ -163,7 +163,7 @@ function initLightbox() {
 
   document.querySelectorAll(".gallery__tile").forEach((tile) => {
     const src = tile.dataset.full || tile.querySelector("img")?.src;
-    const alt = tile.querySelector("img")?.alt || "Wedding photo";
+    const alt = tile.querySelector("img")?.alt || "Bröllopsfoto";
     tile.addEventListener("click", () => open(src, alt));
     tile.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {

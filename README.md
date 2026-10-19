@@ -1,39 +1,39 @@
-# Elin & Isac — Wedding Landing Page
+# Elin & Isac — Bröllopssajt
 
-A static, single-page wedding site. Plain HTML/CSS/JS — no build step.
-It is published automatically by GitHub Pages from this repo.
+En statisk, ensidig bröllopssajt. Ren HTML/CSS/JS — inget byggsteg.
+Den publiceras automatiskt av GitHub Pages från detta repo.
 
-## Live site
+## Live-sajt
 https://isacjeppsson1.github.io
 
-## Quick start (customize)
-Most things live in two places:
+## Snabbstart (anpassning)
+De flesta sakerna finns på två ställen:
 
-1. **`js/main.js`** — the `CONFIG` object at the top:
-   - `weddingDate` — drives the hero countdown (`YYYY-MM-DDTHH:MM:SS`)
-   - `mapQuery` — the venue address (updates the map + "Get directions")
-   - `rsvpEmail` — where RSVP emails are sent
+1. **`js/main.js`** — `CONFIG`-objektet högst upp:
+   - `weddingDate` — styr nedräkningen i hero (`ÅÅÅÅ-MM-DDTHH:MM:SS`)
+   - `mapQuery` — lokalens adress (uppdaterar kartan + "Få vägbeskrivning")
+   - `rsvpEmail` — var RSVP-mejl skickas till
 
-2. **`index.html`** — search for the marker `>>> EDIT <<<`:
-   - Hero date & place text
-   - Schedule/timeline times & titles
-   - Venue name, address & notes
-   - Registry / honeymoon links
-   - RSVP "reply by" date
+2. **`index.html`** — sök efter markören `>>> EDIT <<<`:
+   - Hero-datum & plats
+   - Schema/tidslinjens tider & rubriker
+   - Lokalens namn, adress & anteckningar
+   - Presentlista / månfond-länkar
+   - RSVP "svar senast"-datum
 
-## Photos
-Drop images into `assets/img/` and swap the placeholder gallery tiles in
-`index.html` for real `<img>` tags (see `assets/img/README.txt`).
+## Foton
+Lägg bilder i `assets/img/` och byt ut de platshållande gallerirutinerna i
+`index.html` mot riktiga `<img>`-taggar (se `assets/img/README.txt`).
 
-## RSVP form
-The form opens the visitor's email app pre-filled (mailto), so it works with
-zero backend. To collect responses in a form/table instead, point the form at
-a service like Formspree:
+## RSVP-formulär
+Formuläret öppnar besökarens e-postapp ifylld (mailto), så det fungerar utan
+något backend. För att istället samla svar i ett formulär/tabell, peka
+formuläret mot en tjänst som Formspree:
 
 ```html
 <form class="rsvp reveal" id="rsvpForm" action="https://formspree.io/f/YOUR_ID" method="POST">
 ```
 
-## Deploy
-Push to `main` — GitHub Pages builds from the repo root automatically.
+## Publicera
+Pusha till `main` — GitHub Pages bygger automatiskt från repo-roten.
 Settings → Pages → Source: "Deploy from a branch" → `main` / `/ (root)`.
