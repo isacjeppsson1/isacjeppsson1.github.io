@@ -11,19 +11,18 @@ De flesta sakerna finns på två ställen:
 
 1. **`js/main.js`** — `CONFIG`-objektet högst upp:
    - `weddingDate` — styr nedräkningen i hero (`ÅÅÅÅ-MM-DDTHH:MM:SS`)
-   - `mapQuery` — lokalens adress (uppdaterar kartan + "Få vägbeskrivning")
    - `rsvpEmail` — var RSVP-mejl skickas till
 
 2. **`index.html`** — sök efter markören `>>> EDIT <<<`:
    - Hero-datum & plats
    - Schema/tidslinjens tider & rubriker
-   - Lokalens namn, adress & anteckningar
+   - Lokalernas namn, adresser & Google Maps-länkar
    - Presentlista / månfond-länkar
    - RSVP "svar senast"-datum
 
 ## Foton
-Lägg bilder i `assets/img/` och byt ut de platshållande gallerirutinerna i
-`index.html` mot riktiga `<img>`-taggar (se `assets/img/README.txt`).
+Lägg bilder i `assets/img/` och byt ut de platshållande bildrutorna i
+`index.html` (t.ex. toastmasters) mot riktiga `<img>`-taggar (se `assets/img/README.txt`).
 
 ## RSVP-formulär
 Formuläret öppnar besökarens e-postapp ifylld (mailto), så det fungerar utan

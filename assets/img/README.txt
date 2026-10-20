@@ -1,10 +1,10 @@
-Lägg era bröllopsfoton i denna mapp (t.ex. photo-1.jpg, photo-2.jpg).
+Lägg era foton i denna mapp (t.ex. axel.jpg, tekla.jpg).
 
-Därefter, i index.html, ersätt varje platshållande galleriruta
-(.gallery__tile--ph) med ett rikt foto så här:
+Därefter, i index.html, ersätt varje platshållande bildruta
+(.ph) med ett rikt foto så här:
 
-  <figure class="gallery__tile reveal" data-full="assets/img/photo-1.jpg">
-    <img src="assets/img/photo-1.jpg" alt="Elin och Isac" loading="lazy" />
-  </figure>
+  <div class="toaster__photo">
+    <img src="assets/img/axel.jpg" alt="Axel Lundius" loading="lazy" />
+  </div>
 
 Tips: håll bilderna i rimlig storlek (under ~500 KB vardera) så att sajten förblir snabb.

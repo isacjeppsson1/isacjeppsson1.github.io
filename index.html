@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Elin &amp; Isac — Vi gifter oss</title>
-  <meta name="description" content="Följ med när Elin & Isac firar sin bröllopsdag. Schema, lokal, galleri, presentlista och RSVP." />
+  <meta name="description" content="Följ med när Elin & Isac firar sin bröllopsdag. Schema, lokaler, toastmasters, presentlista och RSVP." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%8D%3C/text%3E%3C/svg%3E" />
 </head>
@@ -24,7 +24,7 @@
     <nav class="nav__links" id="navLinks">
       <a href="#schedule">Schema</a>
       <a href="#venue">Lokal</a>
-      <a href="#gallery">Galleri</a>
+      <a href="#toastmasters">Toastmasters</a>
       <a href="#registry">Presentlista</a>
       <a href="#rsvp" class="btn btn--small">RSVP</a>
     </nav>
@@ -35,7 +35,8 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero__bg" aria-hidden="true"></div>
+    <img class="hero__bg" src="assets/img/main.jpg" alt="" aria-hidden="true" />
+    <div class="hero__overlay" aria-hidden="true"></div>
     <div class="hero__content">
       <p class="hero__eyebrow">Tillsammans med sina familjer</p>
       <h1 class="hero__names">
@@ -43,6 +44,7 @@
         <span class="hero__amp">&amp;</span>
         <span class="hero__name">Isac</span>
       </h1>
+      <div class="hero__rule" aria-hidden="true"></div>
       <!-- >>> EDIT <<<  bröllopsdatumet som visas i hero -->
       <p class="hero__date">Lördag, 17 juli 2027</p>
       <p class="hero__place">Lilla Isie, Skåne</p>
@@ -56,50 +58,75 @@
         <div class="countdown__unit"><span id="cd-secs">00</span><small>Sekunder</small></div>
       </div>
     </div>
-    <a class="hero__scroll" href="#schedule" aria-label="Skrolla ner">
-      <span></span>
-    </a>
   </section>
 
   <main>
     <!-- SCHEMA / TIDSLINJE -->
     <section class="section" id="schedule">
       <div class="section__head reveal">
-        <p class="section__eyebrow">Den stora dagen</p>
+        <p class="section__eyebrow">Två dagar av firande</p>
         <h2 class="section__title">Schema</h2>
       </div>
 
       <ol class="timeline">
-        <!-- >>> EDIT <<<  justera tider & rubriker efter er dag -->
-        <li class="timeline__item reveal">
+        <!-- >>> EDIT <<<  justera dagar, tider & rubriker efter era två dagar -->
+
+        <li class="timeline__day reveal">
+          <div class="timeline__day-badge">
+            <span class="timeline__day-date">Fredag · 16 juli</span>
+            <span class="timeline__day-title">Mingel</span>
+          </div>
+        </li>
+        <li class="timeline__item timeline__item--left reveal">
+          <div class="timeline__time">17:00</div>
+          <div class="timeline__card">
+            <h3>Ankomst &amp; mingel</h3>
+            <p>Vi ses för mingel, dryck och god stämning innan den stora dagen.</p>
+          </div>
+        </li>
+        <li class="timeline__item timeline__item--right reveal">
+          <div class="timeline__time">19:00</div>
+          <div class="timeline__card">
+            <h3>Middag</h3>
+            <p>En gemensam middag för alla gäster.</p>
+          </div>
+        </li>
+
+        <li class="timeline__day reveal">
+          <div class="timeline__day-badge">
+            <span class="timeline__day-date">Lördag · 17 juli</span>
+            <span class="timeline__day-title">Bröllopet</span>
+          </div>
+        </li>
+        <li class="timeline__item timeline__item--left reveal">
           <div class="timeline__time">14:00</div>
           <div class="timeline__card">
             <h3>Ceremoni</h3>
             <p>Det officiella “ja”. Kom gärna 15 minuter i god tid.</p>
           </div>
         </li>
-        <li class="timeline__item reveal">
+        <li class="timeline__item timeline__item--right reveal">
           <div class="timeline__time">15:00</div>
           <div class="timeline__card">
             <h3>Cocktailpass</h3>
             <p>Dryck, canapés och gott sällskap i trädgården.</p>
           </div>
         </li>
-        <li class="timeline__item reveal">
+        <li class="timeline__item timeline__item--left reveal">
           <div class="timeline__time">17:00</div>
           <div class="timeline__card">
             <h3>Middag &amp; tal</h3>
             <p>Middag, tal och lite dans.</p>
           </div>
         </li>
-        <li class="timeline__item reveal">
+        <li class="timeline__item timeline__item--right reveal">
           <div class="timeline__time">20:00</div>
           <div class="timeline__card">
             <h3>Första dansen</h3>
             <p>Då börjar festen — alla bjuds in på dansgolvet.</p>
           </div>
         </li>
-        <li class="timeline__item reveal">
+        <li class="timeline__item timeline__item--left reveal">
           <div class="timeline__time">23:00</div>
           <div class="timeline__card">
             <h3>Tårta &amp; sista dansen</h3>
@@ -109,72 +136,89 @@
       </ol>
     </section>
 
-    <!-- LOKAL & KARTA -->
+    <!-- LOKALER -->
     <section class="section section--dark" id="venue">
       <div class="section__head reveal">
         <p class="section__eyebrow">Hitta hit</p>
-        <h2 class="section__title">Lokal</h2>
+        <h2 class="section__title">Lokaler</h2>
       </div>
 
-      <div class="venue reveal">
-        <div class="venue__info">
-          <!-- >>> EDIT <<<  lokalens namn, adress & kontakt -->
-          <h3 class="venue__name">Lilla Isie</h3>
-          <p class="venue__addr">Lilla Isie<br />Skåne, Sverige</p>
-          <p class="venue__note">
-            Både ceremoni och reception hålls på lokalen.
-            Parkeringsservice finns tillgänglig under dagen.
-          </p>
-          <!-- >>> EDIT <<<  ändra adressen i js/main.js (CONFIG.mapQuery)
-                för att automatiskt uppdatera kartan + vägbeskrivningslänken -->
-          <a class="btn" id="directionsBtn" href="#" target="_blank" rel="noopener">
-            Få vägbeskrivning
+      <div class="venues">
+        <!-- >>> EDIT <<<  tre lokaler. Uppdatera namn, adress och
+                "Hitta hit"-länkens query-parameter för varje. -->
+        <article class="venue-card reveal">
+          <p class="venue-card__event">Mingel · Fredag 16 juli</p>
+          <h3 class="venue-card__name">Hedmansgården</h3>
+          <p class="venue-card__addr">Hedmansgården<br />Skåne, Sverige</p>
+          <a class="btn btn--ghost btn--small" href="https://www.google.com/maps/search/?api=1&query=Hedmansg%C3%A5rden" target="_blank" rel="noopener">
+            Hitta hit
           </a>
-        </div>
-        <div class="venue__map">
-          <iframe
-            id="mapFrame"
-            title="Karta över lokalen"
-            src="https://www.google.com/maps?q=Lilla%20Isie%2C%20Sk%C3%A5ne%2C%20Sverige&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-          </iframe>
-        </div>
+        </article>
+
+        <article class="venue-card reveal">
+          <p class="venue-card__event">Vigsel · Lördag 17 juli</p>
+          <h3 class="venue-card__name">Lilla Isie kyrka</h3>
+          <p class="venue-card__addr">Lilla Isie kyrka<br />Skåne, Sverige</p>
+          <a class="btn btn--ghost btn--small" href="https://www.google.com/maps/search/?api=1&query=Lilla%20Isie%20kyrka" target="_blank" rel="noopener">
+            Hitta hit
+          </a>
+        </article>
+
+        <article class="venue-card reveal">
+          <p class="venue-card__event">Fest · Lördag 17 juli</p>
+          <h3 class="venue-card__name">Lilla Isie Boställe</h3>
+          <p class="venue-card__addr">Lilla Isie Boställe<br />Skåne, Sverige</p>
+          <a class="btn btn--ghost btn--small" href="https://www.google.com/maps/search/?api=1&query=Lilla%20Isie%20Bost%C3%A4lle" target="_blank" rel="noopener">
+            Hitta hit
+          </a>
+        </article>
       </div>
     </section>
 
-    <!-- GALLERI -->
-    <section class="section" id="gallery">
+    <!-- TOASTMASTERS -->
+    <section class="section" id="toastmasters">
       <div class="section__head reveal">
-        <p class="section__eyebrow">En liten försmak</p>
-        <h2 class="section__title">Galleri</h2>
+        <p class="section__eyebrow">Era värdar</p>
+        <h2 class="section__title">Toastmasters</h2>
       </div>
 
-      <div class="gallery">
-        <!-- >>> EDIT <<<  Ersätt varje .gallery__tile med ett rikt foto:
-                <figure class="gallery__tile reveal" data-full="assets/img/photo-1.jpg">
-                  <img src="assets/img/photo-1.jpg" alt="Elin och Isac" loading="lazy" />
-                </figure>
-              Lägg era bilder i mappen assets/img/. -->
-        <figure class="gallery__tile gallery__tile--ph reveal" data-full="" tabindex="0">
-          <div class="ph"><span>Foto</span></div>
-        </figure>
-        <figure class="gallery__tile gallery__tile--ph reveal" data-full="" tabindex="0">
-          <div class="ph ph--2"><span>Foto</span></div>
-        </figure>
-        <figure class="gallery__tile gallery__tile--ph reveal" data-full="" tabindex="0">
-          <div class="ph ph--3"><span>Foto</span></div>
-        </figure>
-        <figure class="gallery__tile gallery__tile--ph reveal" data-full="" tabindex="0">
-          <div class="ph ph--4"><span>Foto</span></div>
-        </figure>
-        <figure class="gallery__tile gallery__tile--ph reveal" data-full="" tabindex="0">
-          <div class="ph ph--5"><span>Foto</span></div>
-        </figure>
-        <figure class="gallery__tile gallery__tile--ph reveal" data-full="" tabindex="0">
-          <div class="ph ph--6"><span>Foto</span></div>
-        </figure>
+      <div class="toasters">
+        <!-- >>> EDIT <<<  Byt ut .ph-platshållaren mot ett foto:
+                 <img src="assets/img/axel.jpg" alt="Axel Lundius" loading="lazy" />
+               Uppdatera namn, text och kontaktuppgifter för varje person. -->
+        <article class="toaster reveal">
+          <div class="toaster__photo">
+            <div class="ph"><span>Foto</span></div>
+          </div>
+          <div class="toaster__body">
+            <h3 class="toaster__name">Axel Lundius</h3>
+            <p class="toaster__bio">
+              Axel tar er genom kvällen med värme och goda ord. Räkna med en
+              historia för varje tillfälle — och en toast för alla.
+            </p>
+            <div class="toaster__contact">
+              <a href="mailto:axel@example.com">axel@example.com</a>
+              <a href="tel:+46701234567">070-123 45 67</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="toaster reveal">
+          <div class="toaster__photo">
+            <div class="ph ph--2"><span>Foto</span></div>
+          </div>
+          <div class="toaster__body">
+            <h3 class="toaster__name">Tekla Isell</h3>
+            <p class="toaster__bio">
+              Tekla håller i trådarna bakom kulisserna och ser till att allt
+              flyter på. Med henne i ledet kan ni slappna av och njuta.
+            </p>
+            <div class="toaster__contact">
+              <a href="mailto:tekla@example.com">tekla@example.com</a>
+              <a href="tel:+46707654321">070-765 43 21</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -256,12 +300,6 @@
     <p class="footer__line">17.07.2027 — Skåne</p>
     <p class="footer__copy">Gjord med kärlek.</p>
   </footer>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox__close" id="lightboxClose" aria-label="Stäng">&times;</button>
-    <img class="lightbox__img" id="lightboxImg" src="" alt="" />
-  </div>
 
   <script src="js/main.js"></script>
 </body>

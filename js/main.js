@@ -6,8 +6,6 @@
 const CONFIG = {
   // Bröllopsdatum & -tid (lokal tid). Format: ÅÅÅÅ-MM-DDTHH:MM:SS
   weddingDate: "2027-07-17T14:00:00",
-  // Adress som används för kartan + "Få vägbeskrivning"-länken
-  mapQuery: "Lilla Isie, Skåne, Sverige",
   // Mottagare för RSVP-formuläret (öppnar besökarens e-postapp)
   rsvpEmail: "elin.and.isac@example.com",
 };
@@ -15,10 +13,8 @@ const CONFIG = {
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initCountdown();
-  initMap();
   initReveal();
   initRSVP();
-  initLightbox();
 });
 
 /* ---------- Klistrad navigering ---------- */
@@ -78,15 +74,6 @@ function initCountdown() {
   setInterval(tick, 1000);
 }
 
-/* ---------- Karta + vägbeskrivning ---------- */
-function initMap() {
-  const q = encodeURIComponent(CONFIG.mapQuery);
-  const frame = document.getElementById("mapFrame");
-  const btn = document.getElementById("directionsBtn");
-  if (frame) frame.src = `https://www.google.com/maps?q=${q}&output=embed`;
-  if (btn) btn.href = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
-}
-
 /* ---------- Visa vid scroll ---------- */
 function initReveal() {
   const items = document.querySelectorAll(".reveal");
@@ -139,41 +126,4 @@ function initRSVP() {
       "Tack! Din e-postapp bör öppnas med din RSVP redo att skickas.";
     form.reset();
   });
-}
-
-/* ---------- Lightbox ---------- */
-function initLightbox() {
-  const box = document.getElementById("lightbox");
-  const img = document.getElementById("lightboxImg");
-  const close = document.getElementById("lightboxClose");
-  if (!box) return;
-
-  const open = (src, alt) => {
-    if (!src) return;
-    img.src = src;
-    img.alt = alt || "";
-    box.classList.add("is-open");
-    box.setAttribute("aria-hidden", "false");
-  };
-  const hide = () => {
-    box.classList.remove("is-open");
-    box.setAttribute("aria-hidden", "true");
-    img.src = "";
-  };
-
-  document.querySelectorAll(".gallery__tile").forEach((tile) => {
-    const src = tile.dataset.full || tile.querySelector("img")?.src;
-    const alt = tile.querySelector("img")?.alt || "Bröllopsfoto";
-    tile.addEventListener("click", () => open(src, alt));
-    tile.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        open(src, alt);
-      }
-    });
-  });
-
-  close.addEventListener("click", hide);
-  box.addEventListener("click", (e) => e.target === box && hide());
-  document.addEventListener("keydown", (e) => e.key === "Escape" && hide());
 }
