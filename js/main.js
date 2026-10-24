@@ -6,8 +6,8 @@
 const CONFIG = {
   // Bröllopsdatum & -tid (lokal tid). Format: ÅÅÅÅ-MM-DDTHH:MM:SS
   weddingDate: "2027-07-17T14:00:00",
-  // Mottagare för RSVP-formuläret (öppnar besökarens e-postapp)
-  rsvpEmail: "elin.and.isac@example.com",
+  // Google Apps Script webhook för RSVP
+  rsvpEndpoint: "https://script.google.com/macros/s/AKfycbyRfy189saJeebiy12WEVcs_HQHiZTfmsCR6jZxslribRUAzsAFjDK12jbR5hMvSYbS/exec",
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,6 +26,15 @@ function initNav() {
   const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 40);
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
+
+  const rsvpSection = document.getElementById("rsvp");
+  if (rsvpSection) {
+    const io = new IntersectionObserver(
+      ([entry]) => nav.classList.toggle("is-hidden", entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    io.observe(rsvpSection);
+  }
 
   toggle.addEventListener("click", () => {
     const open = links.classList.toggle("is-open");
@@ -101,29 +110,32 @@ function initRSVP() {
   const status = document.getElementById("rsvpStatus");
   if (!form) return;
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
     const data = new FormData(form);
-    const lines = [
-      `Namn: ${data.get("name")}`,
-      `E-post: ${data.get("email")}`,
-      `Deltar: ${data.get("attending")}`,
-      `Gäster: ${data.get("guests")}`,
-      `Meddelande: ${data.get("message") || "-"}`,
-    ];
-    const subject = `RSVP — ${data.get("name")}`;
-    const body = encodeURIComponent(lines.join("\n"));
-    const mailto = `mailto:${CONFIG.rsvpEmail}?subject=${encodeURIComponent(
-      subject
-    )}&body=${body}`;
+    const payload = {
+      name: data.get("name"),
+      email: data.get("email"),
+      attending: data.get("attending"),
+      guests: data.get("guests"),
+      message: data.get("message") || "",
+    };
 
-    window.location.href = mailto;
-    status.textContent =
-      "Tack! Din e-postapp bör öppnas med din RSVP redo att skickas.";
-    form.reset();
+    status.textContent = "Skickar…";
+    try {
+      await fetch(CONFIG.rsvpEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload),
+      });
+      status.textContent = "Tack! Din RSVP har tagits emot.";
+      form.reset();
+    } catch {
+      status.textContent = "Något gick fel. Försök igen.";
+    }
   });
 }
