@@ -43,18 +43,48 @@
       <p class="hero__place">Lilla Isie, Skåne</p>
     </div>
     <img class="hero__bg" src="assets/img/main.jpg" alt="" aria-hidden="true" />
-    <div class="hero__content hero__content--bottom">
-      <!-- Nedräkning -->
-      <div class="countdown" id="countdown" aria-label="Nedräkning till bröllopet">
-        <div class="countdown__unit"><span id="cd-days">00</span><small>Dagar</small></div>
-        <div class="countdown__unit"><span id="cd-hours">00</span><small>Timmar</small></div>
-        <div class="countdown__unit"><span id="cd-mins">00</span><small>Minuter</small></div>
-        <div class="countdown__unit"><span id="cd-secs">00</span><small>Sekunder</small></div>
-      </div>
-    </div>
   </section>
 
   <main>
+    <!-- LOKALER -->
+    <section class="section section--dark" id="venue">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Hitta hit</p>
+        <h2 class="section__title">Lokaler</h2>
+      </div>
+
+      <div class="venues">
+        <!-- >>> EDIT <<<  tre lokaler. Uppdatera namn, adress och
+                "Hitta hit"-länkens query-parameter för varje. -->
+        <article class="venue-card reveal">
+          <p class="venue-card__event">Mingel · Fredag 16 juli</p>
+          <h3 class="venue-card__name">Hedmansgården</h3>
+          <p class="venue-card__addr">Hedmansgården<br />Skåne, Sverige</p>
+          <a class="btn btn--ghost btn--small" href="https://www.google.com/maps/search/?api=1&query=Hedmansg%C3%A5rden" target="_blank" rel="noopener">
+            Hitta hit
+          </a>
+        </article>
+
+        <article class="venue-card reveal">
+          <p class="venue-card__event">Vigsel · Lördag 17 juli</p>
+          <h3 class="venue-card__name">Lilla Isie kyrka</h3>
+          <p class="venue-card__addr">Lilla Isie kyrka<br />Skåne, Sverige</p>
+          <a class="btn btn--ghost btn--small" href="https://www.google.com/maps/search/?api=1&query=Lilla%20Isie%20kyrka" target="_blank" rel="noopener">
+            Hitta hit
+          </a>
+        </article>
+
+        <article class="venue-card reveal">
+          <p class="venue-card__event">Fest · Lördag 17 juli</p>
+          <h3 class="venue-card__name">Lilla Isie Boställe</h3>
+          <p class="venue-card__addr">Lilla Isie Boställe<br />Skåne, Sverige</p>
+          <a class="btn btn--ghost btn--small" href="https://www.google.com/maps/search/?api=1&query=Lilla%20Isie%20Bost%C3%A4lle" target="_blank" rel="noopener">
+            Hitta hit
+          </a>
+        </article>
+      </div>
+    </section>
+
     <!-- SCHEMA / TIDSLINJE -->
     <section class="section" id="schedule">
       <div class="section__head reveal">
@@ -130,42 +160,12 @@
       </ol>
     </section>
 
-    <!-- LOKALER -->
-    <section class="section section--dark" id="venue">
+    <!-- KLÄDKOD -->
+    <section class="section section--dark" id="dresscode">
       <div class="section__head reveal">
-        <p class="section__eyebrow">Hitta hit</p>
-        <h2 class="section__title">Lokaler</h2>
-      </div>
-
-      <div class="venues">
-        <!-- >>> EDIT <<<  tre lokaler. Uppdatera namn, adress och
-                "Hitta hit"-länkens query-parameter för varje. -->
-        <article class="venue-card reveal">
-          <p class="venue-card__event">Mingel · Fredag 16 juli</p>
-          <h3 class="venue-card__name">Hedmansgården</h3>
-          <p class="venue-card__addr">Hedmansgården<br />Skåne, Sverige</p>
-          <a class="btn btn--ghost btn--small" href="https://www.google.com/maps/search/?api=1&query=Hedmansg%C3%A5rden" target="_blank" rel="noopener">
-            Hitta hit
-          </a>
-        </article>
-
-        <article class="venue-card reveal">
-          <p class="venue-card__event">Vigsel · Lördag 17 juli</p>
-          <h3 class="venue-card__name">Lilla Isie kyrka</h3>
-          <p class="venue-card__addr">Lilla Isie kyrka<br />Skåne, Sverige</p>
-          <a class="btn btn--ghost btn--small" href="https://www.google.com/maps/search/?api=1&query=Lilla%20Isie%20kyrka" target="_blank" rel="noopener">
-            Hitta hit
-          </a>
-        </article>
-
-        <article class="venue-card reveal">
-          <p class="venue-card__event">Fest · Lördag 17 juli</p>
-          <h3 class="venue-card__name">Lilla Isie Boställe</h3>
-          <p class="venue-card__addr">Lilla Isie Boställe<br />Skåne, Sverige</p>
-          <a class="btn btn--ghost btn--small" href="https://www.google.com/maps/search/?api=1&query=Lilla%20Isie%20Bost%C3%A4lle" target="_blank" rel="noopener">
-            Hitta hit
-          </a>
-        </article>
+        <p class="section__eyebrow">Vad ska jag ha på mig?</p>
+        <h2 class="section__title">Klädkod</h2>
+        <p class="section__lead">Mörk kostym</p>
       </div>
     </section>
 
@@ -291,8 +291,13 @@
   <!-- FOOTER -->
   <footer class="footer">
     <p class="footer__names">Elin &amp; Isac</p>
-    <p class="footer__line">17.07.2027 — Skåne</p>
-    <p class="footer__copy">Gjord med kärlek.</p>
+    <p class="footer__line">17.07.2027</p>
+    <div class="countdown countdown--footer" id="countdown" aria-label="Nedräkning till bröllopet">
+      <div class="countdown__unit"><span id="cd-days">00</span><small>Dagar</small></div>
+      <div class="countdown__unit"><span id="cd-hours">00</span><small>Timmar</small></div>
+      <div class="countdown__unit"><span id="cd-mins">00</span><small>Minuter</small></div>
+      <div class="countdown__unit"><span id="cd-secs">00</span><small>Sekunder</small></div>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>
