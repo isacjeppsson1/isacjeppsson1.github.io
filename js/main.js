@@ -20,10 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ---------- Klistrad navigering ---------- */
 function initNav() {
   const nav = document.querySelector(".nav");
-  const toggle = document.getElementById("navToggle");
-  const links = document.getElementById("navLinks");
+  const heroImg = document.querySelector(".hero__bg");
 
-  const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 40);
+  const onScroll = () => {
+    const scrolled = window.scrollY > 40;
+    nav.classList.toggle("is-scrolled", scrolled);
+    if (heroImg) heroImg.classList.toggle("is-visible", scrolled);
+  };
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -35,18 +38,6 @@ function initNav() {
     );
     io.observe(rsvpSection);
   }
-
-  toggle.addEventListener("click", () => {
-    const open = links.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(open));
-  });
-
-  links.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", () => {
-      links.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-    })
-  );
 }
 
 /* ---------- Nedräkning ---------- */
