@@ -32,14 +32,22 @@ function initNav() {
   if (heroImg) {
     const imgObserver = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          heroImg.classList.add("is-visible");
-          imgObserver.unobserve(heroImg);
-        }
+        heroImg.classList.toggle("is-visible", entry.isIntersecting);
       },
       { threshold: 0.2 }
     );
     imgObserver.observe(heroImg);
+  }
+
+  const hero = document.querySelector(".hero");
+  if (hero) {
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => {
+        hero.classList.toggle("is-hidden", entry.intersectionRatio < 0.5);
+      },
+      { threshold: [0, 0.5, 1] }
+    );
+    heroObserver.observe(hero);
   }
 
   const rsvpSection = document.getElementById("rsvp");
