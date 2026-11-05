@@ -25,10 +25,22 @@ function initNav() {
   const onScroll = () => {
     const scrolled = window.scrollY > 40;
     nav.classList.toggle("is-scrolled", scrolled);
-    if (heroImg) heroImg.classList.toggle("is-visible", scrolled);
   };
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
+
+  if (heroImg) {
+    const imgObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          heroImg.classList.add("is-visible");
+          imgObserver.unobserve(heroImg);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    imgObserver.observe(heroImg);
+  }
 
   const rsvpSection = document.getElementById("rsvp");
   if (rsvpSection) {
