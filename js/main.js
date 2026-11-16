@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initCountdown();
   initReveal();
+  initDropdown();
+  initSubmitButton();
   initRSVP();
 });
 
@@ -115,6 +117,94 @@ function initReveal() {
   items.forEach((el) => io.observe(el));
 }
 
+/* ---------- Anpassad dropdown (Kommer du?) ---------- */
+function initDropdown() {
+  const dropdown = document.getElementById("attendingDropdown");
+  if (!dropdown) return;
+  const trigger = dropdown.querySelector(".dropdown__trigger");
+  const valueEl = dropdown.querySelector(".dropdown__value");
+  const hidden = dropdown.querySelector('input[name="attending"]');
+  const options = Array.from(dropdown.querySelectorAll(".dropdown__option"));
+
+  const close = () => {
+    dropdown.classList.remove("is-open");
+    trigger.setAttribute("aria-expanded", "false");
+  };
+  const open = () => {
+    dropdown.classList.add("is-open");
+    trigger.setAttribute("aria-expanded", "true");
+  };
+
+  trigger.addEventListener("click", () => {
+    dropdown.classList.contains("is-open") ? close() : open();
+  });
+
+  options.forEach((opt) => {
+    opt.addEventListener("click", () => {
+      const value = opt.dataset.value;
+      valueEl.textContent = value;
+      hidden.value = value;
+      options.forEach((o) => o.setAttribute("aria-selected", o === opt ? "true" : "false"));
+      dropdown.classList.remove("has-error");
+      hidden.dispatchEvent(new Event("change", { bubbles: true }));
+      close();
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target)) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
+
+  const form = dropdown.closest("form");
+  if (form) {
+    form.addEventListener("reset", () => {
+      valueEl.textContent = "Välj…";
+      hidden.value = "";
+      options.forEach((o) => o.setAttribute("aria-selected", "false"));
+      dropdown.classList.remove("has-error");
+    });
+  }
+}
+
+/* ---------- Disable submit until required fields are filled ---------- */
+function initSubmitButton() {
+  const form = document.getElementById("rsvpForm");
+  const button = form ? form.querySelector('button[type="submit"]') : null;
+  if (!form || !button) return;
+
+  const nameEl = form.querySelector('input[name="name"]');
+  const emailEl = form.querySelector('input[name="email"]');
+  const attendingEl = form.querySelector('input[name="attending"]');
+  const minglingEl = form.querySelector('input[name="favoriteMinglingSong"]');
+  const songEl = form.querySelector('input[name="favoriteSong"]');
+
+  const update = () => {
+    const attending = attendingEl.value.trim();
+    const needsSongs = attending !== "" && attending !== "Nej, tyvärr";
+    const songsOk =
+      !needsSongs ||
+      (minglingEl.value.trim() !== "" && songEl.value.trim() !== "");
+    button.disabled = !(
+      nameEl.value.trim() !== "" &&
+      emailEl.value.trim() !== "" &&
+      attending !== "" &&
+      songsOk
+    );
+  };
+
+  [nameEl, emailEl, attendingEl, minglingEl, songEl].forEach((f) => {
+    if (!f) return;
+    f.addEventListener("input", update);
+    f.addEventListener("change", update);
+  });
+  form.addEventListener("reset", update);
+
+  update();
+}
+
 /* ---------- RSVP-formulär ---------- */
 function initRSVP() {
   const form = document.getElementById("rsvpForm");
@@ -127,12 +217,20 @@ function initRSVP() {
       form.reportValidity();
       return;
     }
+    const attendingEl = form.querySelector('input[name="attending"]');
+    if (!attendingEl.value) {
+      const dd = document.getElementById("attendingDropdown");
+      if (dd) dd.classList.add("has-error");
+      status.textContent = "Vänligen ange om du kommer.";
+      return;
+    }
     const data = new FormData(form);
     const payload = {
       name: data.get("name"),
       email: data.get("email"),
       attending: data.get("attending"),
-      guests: data.get("guests"),
+      favoriteSong: data.get("favoriteSong") || "",
+      favoriteMinglingSong: data.get("favoriteMinglingSong") || "",
       message: data.get("message") || "",
     };
 

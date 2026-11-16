@@ -54,6 +54,7 @@
       </div>
 
       <div class="venues">
+        <img class="venue-blob" src="assets/img/blob-grönrosa.png" alt="" aria-hidden="true" />
         <!-- >>> EDIT <<<  tre lokaler. Uppdatera namn, adress och
                 "Hitta hit"-länkens query-parameter för varje. -->
         <article class="venue-card reveal">
@@ -96,8 +97,10 @@
           <div class="timeline__day-badge">
             <span class="timeline__day-date">Fredag · 16 juli</span>
             <span class="timeline__day-title">Mingel</span>
+            <p class="timeline__tba">Tider anges senare (TBA).</p>
           </div>
         </li>
+        <!--
         <li class="timeline__item timeline__item--left reveal">
           <div class="timeline__time">17:00</div>
           <div class="timeline__card">
@@ -112,13 +115,16 @@
             <p>En gemensam middag för alla gäster.</p>
           </div>
         </li>
+        -->
 
         <li class="timeline__day reveal">
           <div class="timeline__day-badge">
             <span class="timeline__day-date">Lördag · 17 juli</span>
             <span class="timeline__day-title">Bröllopet</span>
+            <p class="timeline__tba">Tider anges senare (TBA).</p>
           </div>
         </li>
+        <!--
         <li class="timeline__item timeline__item--left reveal">
           <div class="timeline__time">14:00</div>
           <div class="timeline__card">
@@ -154,6 +160,7 @@
             <p>Tårtklipning och avsked under stjärnorna.</p>
           </div>
         </li>
+        -->
       </ol>
     </section>
 
@@ -189,8 +196,13 @@
     <!-- TOASTMASTERS -->
     <section class="section" id="toastmasters">
       <div class="section__head reveal">
-        <p class="section__eyebrow">Era värdar</p>
         <h2 class="section__title">Toastmasters</h2>
+        <p class="section__lead">
+          Möt kvällens toastmasters, våra underbara vänner Tekla och Axel! De har
+          fått det stora ansvaret att hålla ihop bröllopsmiddagen och se till att
+          stämningen är på topp. Om du vill hålla tal, spexa eller överraska oss
+          med något annat kul, hör av dig till någon av dem i god tid!
+        </p>
       </div>
 
       <div class="toasters">
@@ -203,10 +215,6 @@
           </div>
           <div class="toaster__body">
             <h3 class="toaster__name">Axel Lundius</h3>
-            <p class="toaster__bio">
-              Axel tar er genom kvällen med värme och goda ord. Räkna med en
-              historia för varje tillfälle — och en toast för alla.
-            </p>
             <div class="toaster__contact">
               <a href="mailto:axel@example.com">axel@example.com</a>
               <a href="tel:+46701234567">070-123 45 67</a>
@@ -220,10 +228,6 @@
           </div>
           <div class="toaster__body">
             <h3 class="toaster__name">Tekla Isell</h3>
-            <p class="toaster__bio">
-              Tekla håller i trådarna bakom kulisserna och ser till att allt
-              flyter på. Med henne i ledet kan ni slappna av och njuta.
-            </p>
             <div class="toaster__contact">
               <a href="mailto:tekla@example.com">tekla@example.com</a>
               <a href="tel:+46707654321">070-765 43 21</a>
@@ -248,20 +252,11 @@
       <div class="registry reveal">
         <div class="registry__text">
           <p class="section__eyebrow">Er generositet</p>
-          <h2 class="section__title">Presentlista</h2>
+          <h2 class="section__title">Presenter</h2>
           <p>
             Er närvaro är den största gåvan av alla. Om ni vill hedra oss med
-            en present, skulle en insats till vår månfond betyda världen.
+            en present, skulle en insats till vår bröllopsresa betyda mycket för oss.
           </p>
-        </div>
-        <div class="registry__actions">
-          <!-- >>> EDIT <<<  länk till er presentlista / månfond -->
-          <a class="btn" href="https://www.example.com/registry" target="_blank" rel="noopener">
-            Se presentlistan
-          </a>
-          <a class="btn btn--ghost" href="https://www.example.com/honeymoon" target="_blank" rel="noopener">
-            Månfond
-          </a>
         </div>
       </div>
     </section>
@@ -272,7 +267,7 @@
         <p class="section__eyebrow">Vi skulle älska att fira med er</p>
         <h2 class="section__title">RSVP</h2>
         <p class="section__lead">
-          Var snäll och meddela oss senast <strong>1 juni 2027</strong>.
+          Var snäll och meddela oss senast <strong>30 april 2027</strong>.
         </p>
       </div>
 
@@ -290,18 +285,28 @@
             <span>E-post</span>
             <input type="email" name="email" required autocomplete="email" placeholder="du@exempel.se" />
           </label>
-          <label class="field">
+          <div class="field field--span">
             <span>Kommer du?</span>
-            <select name="attending" required>
-              <option value="" disabled selected>Välj…</option>
-              <option value="Glatt ja">Glatt ja</option>
-              <option value="Tyvärr nej">Tyvärr nej</option>
-            </select>
-          </label>
-          <label class="field">
-            <span>Antal gäster</span>
-            <input type="number" name="guests" min="1" max="10" value="1" />
-          </label>
+            <div class="dropdown" id="attendingDropdown">
+              <button type="button" class="dropdown__trigger" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dropdown__value">Välj…</span>
+                <svg class="dropdown__arrow" viewBox="0 0 12 8" width="12" height="8" aria-hidden="true">
+                  <path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <ul class="dropdown__list" role="listbox" aria-label="Kommer du?">
+                <li class="dropdown__option" role="option" data-value="Ja, till båda dagarna" aria-selected="false">Ja, till båda dagarna</li>
+                <li class="dropdown__option" role="option" data-value="Ja, endast bröllopsdagen" aria-selected="false">Ja, endast bröllopsdagen</li>
+                <li class="dropdown__option" role="option" data-value="Nej, tyvärr" aria-selected="false">Nej, tyvärr</li>
+              </ul>
+              <input type="hidden" name="attending" />
+            </div>
+          </div>
+          <div class="field field--span">
+            <span>Favoritlåtar</span>
+            <input type="text" name="favoriteMinglingSong" placeholder="Vilken låt får dig att mingla?" />
+            <input type="text" name="favoriteSong" placeholder="Vilken låt får dig att dansa?" />
+          </div>
         </div>
         <label class="field field--full">
           <span>Meddelande eller matpreferenser (valfritt)</span>
